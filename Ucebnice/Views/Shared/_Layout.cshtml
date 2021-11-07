@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - online_ucebnice</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <style>
+
+        li a:hover {
+            background-color: #111;
+        }
+        li {
+            display: inline;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #343a40">
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                <li class="@( ViewBag.Active == "index" ? "nav-item active" : "")"> <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Učebnice</a></li>
+
+                <li class="@( ViewBag.Active == "nova_ucebnice" ? "nav-item active" : "")"> <a class="nav-link" asp-area="" asp-controller="Home" asp-action="NovaUcebnice">Nová učebnice</a></li>
+
+            </ul>
+
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="NovaUcebnice">Přihlásit se <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+
+        </form>
+
+    </nav>
+        <main role="main" class="pb-3">
+            <div> &nbsp;</div>
+            @RenderBody()
+        </main>
+
+</body>
+
+</html>

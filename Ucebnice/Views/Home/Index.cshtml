@@ -1,0 +1,35 @@
+﻿<div class="container">
+    <div class="row">
+
+        @foreach (string metadata in ViewBag.data)
+        {
+
+            List<string> stringList = metadata.Split('ß').ToList();
+            string nazev = stringList[1];
+            string autor = stringList[2];
+            string datum = stringList[3];
+            string obrazek = nazev + stringList[4];
+
+
+        <div class="col-4">
+
+            <div class="card" style="width: 20rem;">
+                <img class="card-img-top" src="~/obrazky/@obrazek" width="250" height="250" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@nazev</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Autor:</b> @autor</li>
+                    <li class="list-group-item"><b>Datum vytvoření:</b> @datum</li>
+                </ul>
+                <div class="card-body">
+                    <a href="/home/Markdown?ucebnice=@nazev&kapitola=uvod.md" class="card-link">Upravit učebnici</a>
+                    <a href="/home/Text?ucebnice=@nazev&kapitola=uvod.md" class="card-link">Zobrazit učebnici</a>
+                </div>
+            </div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+        </div>
+        }
+    </div>
+</div>

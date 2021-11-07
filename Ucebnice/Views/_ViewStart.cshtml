@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string[] lines = {"Markdown", "Text" };
+
+    if (ViewContext.RouteData.Values["action"].ToString() == "Markdown")
+    {
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+    }
+    else if(ViewContext.RouteData.Values["action"].ToString() == "Text")
+        Layout = "~/Views/Shared/_Layout3.cshtml";
+    else
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
