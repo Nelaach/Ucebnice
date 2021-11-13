@@ -1,35 +1,71 @@
-﻿<div class="container">
+﻿@using System
+@using System.IO;
+
+<head>
+    <script src="https://creativajs.altervista.org/popup/0.2/creativa-popup.js"></script>
+
+</head>
+
+<div class="container">
     <div class="row">
 
         @foreach (string metadata in ViewBag.data)
         {
 
             List<string> stringList = metadata.Split('ß').ToList();
-            string nazev = stringList[1];
-            string autor = stringList[2];
+            string nazevSmezerou = stringList[1].Remove(stringList[1].Length - 1);
+            string nazev = nazevSmezerou.Remove(nazevSmezerou.Length - 1);
+
+            string autorSmezerou = stringList[2];
+            string autor = autorSmezerou.Remove(autorSmezerou.Length - 2); //dva znaky navíc
             string datum = stringList[3];
             string obrazek = nazev + stringList[4];
+            string aktualniAdresar = Directory.GetCurrentDirectory();
+            string content = "<hr>";
 
+            string kapitoly = Directory.GetCurrentDirectory() + $@"\ucebnice\{nazev}\kapitoly";
+            List<string> podKapitoly = new List<string>();
+            Console.WriteLine(nazev + autor);
+            foreach (var d in System.IO.Directory.GetDirectories(kapitoly))
+            {
+                var dir = new DirectoryInfo(d);
+                var dirName = dir.Name;
+                podKapitoly.Add(dirName);
+                content = content + @$"<h3 style=text-align:center>{dirName}</h3>";
+            }
 
-        <div class="col-4">
+            <div class="col-4">
 
-            <div class="card" style="width: 20rem;">
-                <img class="card-img-top" src="~/obrazky/@obrazek" width="250" height="250" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">@nazev</h5>
+                <div class="card" style="width: 20rem;">
+                    <img class="card-img-top" src="~/obrazky/@obrazek" width="250" height="250" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@nazev</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><b>Autor:</b> @autor</li>
+                        <li class="list-group-item"><b>Datum vytvoření:</b> @datum</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="/home/Markdown?ucebnice=@nazev&kapitola=uvod.md" class="card-link">Upravit učebnici</a>
+                        <a href="/home/Text?ucebnice=@nazev&kapitola=uvod.md" class="card-link">Zobrazit učebnici</a>
+                    </div>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Autor:</b> @autor</li>
-                    <li class="list-group-item"><b>Datum vytvoření:</b> @datum</li>
-                </ul>
-                <div class="card-body">
-                    <a href="/home/Markdown?ucebnice=@nazev&kapitola=uvod.md" class="card-link">Upravit učebnici</a>
-                    <a href="/home/Text?ucebnice=@nazev&kapitola=uvod.md" class="card-link">Zobrazit učebnici</a>
-                </div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <h4 style="text-align:center"></h4>
+                <button onclick="popup('@nazev', '@autor', '@content')">Open popup</button>
+
+                <script>
+
+                    function popup(nazev, autor, content) {
+                        CreativaPopup.create(autor, nazev, '', {
+                            width: '400px', height: '400px', content: content, isPage: false
+                        });
+                    }
+                </script>
             </div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-        </div>
+
         }
     </div>
+        
 </div>

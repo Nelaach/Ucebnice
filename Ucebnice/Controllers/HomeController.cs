@@ -41,7 +41,6 @@ namespace Ucebnice.Controllers
 
                 Nazev.Add(dirName);
                 string aktualniAdresar = Directory.GetCurrentDirectory();
-                string[] matches = Directory.GetFiles($@"{aktualniAdresar}\wwwroot\obrazky", $"{dirName}.*");
 
             }
             foreach (string file in Nazev)
@@ -173,6 +172,7 @@ namespace Ucebnice.Controllers
         [HttpPost]
         public IActionResult NovaUcebnice(string nazev, string autor, string datum, IFormFile files)
         {
+            //dořešit háčky, čárky a bez souboru to nepustí dál
             string nazev_souboru = files.FileName;
             string[] rozdeleni =nazev_souboru.Split('.');
             var extension = rozdeleni[1];

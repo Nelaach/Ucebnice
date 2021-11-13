@@ -17,7 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ucebnice\" />
+    <Folder Include="ucebnice\Pikachu\kapitoly\2\" />
+    <Folder Include="ucebnice\Pikachu\kapitoly\1\" />
+    <Folder Include="ucebnice\Slovensko\kapitoly\dvojka\" />
+    <Folder Include="ucebnice\Slovensko\kapitoly\jednička\" />
   </ItemGroup>
 
 </Project>
