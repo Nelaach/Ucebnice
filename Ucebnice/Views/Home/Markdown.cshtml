@@ -11,14 +11,14 @@
 </head>
 <body>
     <div id="main">
-        <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Markdown_text" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-Kapitoly="@ViewBag.Kapitola">
-            Kapitola: <input type="text" name="kapitola" value="@ViewBag.Kapitola">
+        <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Markdown_text" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@ViewBag.Kapitola" asp-route-podkapitola="@ViewBag.PodKapitola">
+            Kapitola: <input type="text" name="zmena_nazvu" value="@ViewBag.PodKapitola">
             <div>&nbsp</div>
             <textarea id="file-input" name="text">@ViewBag.FileText </textarea>
             <input class="btn btn-success" type="submit" value="Uložit" />
 
 
-            <a asp-controller="Home" asp-action="SmazatKapitolu" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-Kapitoly="@ViewBag.Kapitola">
+            <a asp-controller="Home" asp-action="SmazatPodKapitolu" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@ViewBag.Kapitola" asp-route-podkapitola="@ViewBag.PodKapitola">
                 <input type="button" class="btn btn-danger" value="Smazat" />
             </a>
 

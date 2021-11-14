@@ -57,22 +57,22 @@ namespace Ucebnice.Controllers
 
             return View("Index");
         }
-        public IActionResult Markdown(string ucebnice, string kapitola)
+        public IActionResult Markdown(string ucebnice, string kapitola, string podkapitola)
         {
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             sw.Start();
-            ArrayList Kapitoly = new ArrayList();
-            string[] dirs = System.IO.Directory.GetDirectories(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\");
-            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\", "*.md");
+            ArrayList podKapitoly = new ArrayList();
+            string[] dirs = System.IO.Directory.GetDirectories(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}");
+            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}", "*.md");
             foreach (string file in files)
-                Kapitoly.Add(Path.GetFileName(file));
+                podKapitoly.Add(Path.GetFileName(file));
 
             if (dirs.Length == 0 && files.Length == 0) //pokud je adresář prázdný
             {
                 Console.WriteLine("empty");
                 string[] lines = { " ", "**Toto je úvodní kapitola**" };
 
-                using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", ucebnice, "kapitoly", kapitola)))
+                using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", ucebnice, "kapitoly", kapitola, podkapitola)))
                 {
                     foreach (string line in lines)
                         outputFile.WriteLine(line);
@@ -86,79 +86,81 @@ namespace Ucebnice.Controllers
             }
 
             sw.Stop();
-            string text = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}");
+            string text = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{podkapitola}");
 
             ViewBag.FileText = text;
             ViewBag.Ucebnice = ucebnice;
-            ViewBag.Kapitoly = Kapitoly;
+            ViewBag.PodKapitoly = podKapitoly;
+            ViewBag.PodKapitola = podkapitola;
             ViewBag.Kapitola = kapitola;
 
             return View("Markdown");
         }
         [HttpPost]
-        public IActionResult Markdown_text(string ucebnice, string Kapitoly)
+        public IActionResult Markdown_text(string ucebnice, string kapitola, string podkapitola)
         {
-            if (Kapitoly == "null")
+            if (kapitola == "null")
             {
                 Console.WriteLine("žádna kapitolka");
             }
             string text = HttpContext.Request.Form["text"];
-            string kapitola = HttpContext.Request.Form["kapitola"];
+            string zmena_nazvu = HttpContext.Request.Form["zmena_nazvu"];
 
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", ucebnice, "kapitoly", Kapitoly)))
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", ucebnice, "kapitoly", kapitola, podkapitola)))
             {
                 outputFile.WriteLine(text);
             }
-            if (Kapitoly != kapitola)
+            if (podkapitola != zmena_nazvu)
             {
-                System.IO.File.Move(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{Kapitoly}", Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}");
-                return Redirect($"Markdown?ucebnice={ucebnice}&kapitola={kapitola}");
-
-
+                System.IO.File.Move(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{podkapitola}", Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{zmena_nazvu}");
+                return Redirect($"Markdown?ucebnice={ucebnice}&kapitola={kapitola}&podkapitola={zmena_nazvu}");
             }
             else {
-                return Redirect($"Markdown?ucebnice={ucebnice}&kapitola={Kapitoly}");
-
+                return Redirect($"Markdown?ucebnice={ucebnice}&kapitola={kapitola}&podkapitola={podkapitola}");
             }
-      
-
-
-
         }
-        public IActionResult SmazatKapitolu(string ucebnice, string Kapitoly)
+        public IActionResult NovaKapitola(string ucebnice, string kapitola)
         {
-            System.IO.File.Delete(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{Kapitoly}");
-            return Redirect($"Markdown?ucebnice={ucebnice}&kapitola=Uvod.md");
-
+            Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", ucebnice, "kapitoly", kapitola));
+            return Redirect($"NovaPodKapitola?ucebnice={ucebnice}&kapitola={kapitola}");
 
         }
 
-        public IActionResult NovaKapitola(string ucebnice)
+        public IActionResult SmazatPodKapitolu(string ucebnice, string podkapitola, string kapitola)
         {
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", ucebnice, "kapitoly", "NovaKapitola.md")))
+            System.IO.File.Delete(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{podkapitola}");
+            return Redirect($"Markdown?ucebnice={ucebnice}&kapitola={kapitola}&podkapitola=Uvod.md");
+
+
+        }
+
+        public IActionResult NovaPodKapitola(string ucebnice, string kapitola)
+        {
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", ucebnice, "kapitoly", kapitola, "Uvod.md")))
             {
                 string[] lines = { " ", "*Sem zadejte libovolný text*" };
 
                 foreach (string line in lines)
                     outputFile.WriteLine(line);
 
-                return Redirect($"Markdown?ucebnice={ucebnice}&kapitola=NovaKapitola.md");
+                return Redirect($"Markdown?ucebnice={ucebnice}&kapitola={kapitola}&podkapitola=Uvod.md");
             }
         }
-        public IActionResult Text(string ucebnice, string kapitola)
+        public IActionResult Text(string ucebnice, string kapitola, string podkapitola)
         {
-            string text = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}");
+            string text = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{podkapitola}");
             var pipeline = new Markdig.MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
             var result = Markdig.Markdown.ToHtml(text, pipeline);
 
-            ArrayList Kapitoly = new ArrayList();
-            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\", "*.md");
+            ArrayList podKapitoly = new ArrayList();
+            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\", "*.md");
             foreach (string file in files)
-                Kapitoly.Add(Path.GetFileName(file));
+                podKapitoly.Add(Path.GetFileName(file));
 
-            ViewBag.Ucebnice = ucebnice;
-            ViewBag.Kapitoly = Kapitoly;
             ViewBag.Kapitola = kapitola;
+            ViewBag.Ucebnice = ucebnice;
+            ViewBag.PodKapitoly = podKapitoly;
+            ViewBag.PodKapitola = podkapitola;
             ViewBag.FileText = result;
             return View();
 
@@ -215,7 +217,7 @@ namespace Ucebnice.Controllers
                     }
                 }
             }
-            return Redirect($"Markdown?ucebnice={nazev}&kapitola=uvod.md");
+            return Redirect($"/");
 
         }
 

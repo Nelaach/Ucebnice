@@ -73,16 +73,16 @@
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <ul>
-            @foreach (string kapitoly in ViewBag.Kapitoly)
+            @foreach (string podkapitoly in ViewBag.PodKapitoly)
             {
 
-                <li><a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="Markdown" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@kapitoly"> @kapitoly</a></li>
+                <li><a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="Markdown" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@ViewBag.Kapitola" asp-route-podkapitola="@podkapitoly"> @podkapitoly</a></li>
             }
         </ul>
 
         <ul class="nova_ucebnice list-group">
             <li>
-                <a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="NovaKapitola" asp-route-Ucebnice="@ViewBag.Ucebnice"> Nová kapitola</a>
+                <a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="NovaPodKapitola" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@ViewBag.Kapitola"> Nová kapitola</a>
 
             </li>
         </ul>
