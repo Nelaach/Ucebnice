@@ -1,13 +1,37 @@
 ﻿@{
     ViewData["Title"] = "Markdown";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 <!DOCTYPE html>
 <html>
+<head>
+    <style>
+        title1 {
+            color: red;
+        }
+
+        title3 {
+            color: blue;
+        }
+    </style>
+</head>
+
 <body>
 
     <div class="container">
         @Html.Raw(ViewBag.FileText)
+        @if (SignInManager.IsSignedIn(User))
+        {
+
+            <a asp-area="" asp-controller="Home" asp-action="Markdown" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@ViewBag.Kapitola" asp-route-podkapitola="@ViewBag.PodKapitola">
+                <input type="button" class="btn btn-primary" value="Upravit" />
+            </a>
+        }
+
     </div>
+
 </body>
 </html>

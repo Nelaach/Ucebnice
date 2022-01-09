@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 </head>
 <body>
+
     <div id="main">
         <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Markdown_text" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@ViewBag.Kapitola" asp-route-podkapitola="@ViewBag.PodKapitola">
             Kapitola: <input type="text" name="zmena_nazvu" value="@ViewBag.PodKapitola">
@@ -21,7 +22,6 @@
             <a asp-controller="Home" asp-action="SmazatPodKapitolu" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@ViewBag.Kapitola" asp-route-podkapitola="@ViewBag.PodKapitola">
                 <input type="button" class="btn btn-danger" value="Smazat" />
             </a>
-
         </form>
     </div>
     <script>

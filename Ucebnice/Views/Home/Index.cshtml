@@ -1,84 +1,90 @@
 ﻿@using System
 @using System.IO;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+        <head>
+            <script src="https://creativajs.altervista.org/popup/0.2/creativa-popup.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<head>
-    <script src="https://creativajs.altervista.org/popup/0.2/creativa-popup.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        </head>
+    <div class="container">
+        <div class="row">
 
-</head>
-
-<div class="container">
-    <div class="row">
-
-        @foreach (string metadata in ViewBag.data)
-        {
-
-            List<string> stringList = metadata.Split('ß').ToList();
-            string nazevSmezerou = stringList[1].Remove(stringList[1].Length - 1);
-            string nazev = nazevSmezerou.Remove(nazevSmezerou.Length - 1);
-
-            string autorSmezerou = stringList[2];
-            string autor = autorSmezerou.Remove(autorSmezerou.Length - 2); //dva znaky navíc
-            string datum = stringList[3];
-            string obrazek = nazev + stringList[4];
-            string aktualniAdresar = Directory.GetCurrentDirectory();
-            string zk = "'" + nazev + "'";
-            string content_prihlaseni = $@"<div style=text-align:center><a href=# onClick=textInput(""{nazev}"");>Nová kapitola</a></div><hr>";
-            string content_uzivatele = "<hr>";
-
-            string kapitoly = Directory.GetCurrentDirectory() + $@"\ucebnice\{nazev}\kapitoly";
-            List<string> podKapitoly = new List<string>();
-            Console.WriteLine(nazev + autor);
-            foreach (var d in System.IO.Directory.GetDirectories(kapitoly))
+            @foreach (string metadata in ViewBag.data)
             {
-                var dir = new DirectoryInfo(d);
-                var dirName = dir.Name;
-                podKapitoly.Add(dirName);
-                content_prihlaseni = content_prihlaseni + @$"<h5 style=text-align:center><a href=""/home/Markdown?ucebnice={nazev}&kapitola={dirName}&podkapitola=uvod.md"">{dirName}<a></h5>";
-                content_uzivatele = content_uzivatele + @$"<h5 style=text-align:center><a href=""/home/Text?ucebnice={nazev}&kapitola={dirName}&podkapitola=uvod.md"">{dirName}<a></h5>";
+
+                List<string> stringList = metadata.Split('ß').ToList();
+                string nazevSmezerou = stringList[1].Remove(stringList[1].Length - 1);
+                string nazev = nazevSmezerou.Remove(nazevSmezerou.Length - 1);
+
+                string autorSmezerou = stringList[2];
+                string autor = autorSmezerou.Remove(autorSmezerou.Length - 2); //dva znaky navíc
+                string datum = stringList[3];
+                string obrazek = nazev + stringList[4];
+                string aktualniAdresar = Directory.GetCurrentDirectory();
+                string zk = "'" + nazev + "'";
+                string content_prihlaseni = $@"<div style=text-align:center><a href=# onClick=textInput(""{nazev}"");>Nová kapitola</a></div><hr>";
+                string content_uzivatele = "<hr>";
+
+                string kapitoly = Directory.GetCurrentDirectory() + $@"\ucebnice\{nazev}\kapitoly";
+                List<string> podKapitoly = new List<string>();
+                Console.WriteLine(nazev + autor);
+                foreach (var d in System.IO.Directory.GetDirectories(kapitoly))
+                {
+                    var dir = new DirectoryInfo(d);
+                    var dirName = dir.Name;
+                    podKapitoly.Add(dirName);
+                    content_prihlaseni = content_prihlaseni + @$"<h5 style=text-align:left><a href=""/home/Markdown?ucebnice={nazev}&kapitola={dirName}&podkapitola=1. uvod.md"">{dirName}<a></h5>";
+                    content_uzivatele = content_uzivatele + @$"<h5 style=text-align:left><a href=""/home/Text?ucebnice={nazev}&kapitola={dirName}&podkapitola=1. uvod.md"">{dirName}<a></h5>";
+                }
+
+                <div class="col-sm">
+                    <div class="card" style="width: 20rem;">
+                        <img class="card-img-top" src="~/obrazky/@obrazek" width="250" height="250" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@nazev</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><b>Autor:</b> @autor</li>
+                            <li class="list-group-item"><b>Datum vytvoření:</b> @datum</li>
+                        </ul>
+                        <div class="card-body">
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <a href="#" onclick="popup('@nazev', '@autor', '@content_prihlaseni')" class="card-link">Upravit učebnici</a>
+                            }
+                                <a href="#" onclick="popup('@nazev', '@autor', '@content_uzivatele')" class="card-link">Zobrazit učebnici</a>
+                                
+                            </div>
+                    </div>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <script>
+
+                        function popup(nazev, autor, content_prihlaseni) {
+                            CreativaPopup.create(autor, nazev, '', {
+                                width: '400px', height: '500px', content: content_prihlaseni, isPage: false
+                            });
+                        }
+
+                        function textInput(ucebnice) {
+                            let kapitola = prompt("Napište název kapitoly", "");
+                            if (kapitola == null || kapitola == "") {
+                                alert("Nebyl vybrán žádný název pro kapitolu")
+                            } else {
+                                window.location.reload(true);
+                                window.location.href = "/home/NovaKapitola?ucebnice=" + ucebnice + "&kapitola=" + kapitola;
+
+
+                            }
+
+                        }
+                    </script>
+                </div>
+
             }
-
-        <div class="col-sm">
-            <div class="card" style="width: 20rem;">
-                <img class="card-img-top" src="~/obrazky/@obrazek" width="250" height="250" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">@nazev</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Autor:</b> @autor</li>
-                    <li class="list-group-item"><b>Datum vytvoření:</b> @datum</li>
-                </ul>
-                <div class="card-body">
-                    <a href="#" onclick="popup('@nazev', '@autor', '@content_prihlaseni')" class="card-link">Upravit učebnici</a>
-                    <a href="#" onclick="popup('@nazev', '@autor', '@content_uzivatele')" class="card-link">Zobrazit učebnici</a>
-                </div>
-            </div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <script>
-                function popup(nazev, autor, content_prihlaseni) {
-                    CreativaPopup.create(autor, nazev, '', {
-                        width: '400px', height: '500px', content: content_prihlaseni, isPage: false
-                    });
-                }
-
-                function textInput(ucebnice) {
-                    let kapitola = prompt("Napište název kapitoly", "");
-                    if (kapitola == null || kapitola == "") {
-                        alert("Nebyl vybrán žádný název pro kapitolu")
-                    } else {
-                        window.location.reload(true);
-                        window.location.href = "/home/NovaKapitola?ucebnice=" + ucebnice + "&kapitola=" + kapitola;
-
-
-                    }
-
-                }
-            </script>
         </div>
 
-}
     </div>
-        
-</div>

@@ -38,11 +38,11 @@
             <form method="post" name="myForm" enctype="multipart/form-data" asp-controller="Home" asp-action="NovaUcebnice">
                 <table>
                     <tr>
-                        <td>Název učebnice: </td>
+                        <td>* Název učebnice: </td>
                         <td><input type="text" id="nazev" name="nazev" /></td>
                     </tr>
                     <tr>
-                        <td>Autor: </td>
+                        <td>* Autor: </td>
                         <td><input type="text" id="autor" name="autor" /></td>
                     </tr>
                     <tr>
@@ -58,28 +58,20 @@
                     </tr>
 
                     <tr>
-                        <td>Výběr obrázku:</td>
+                        <td>* Výběr obrázku:</td>
                         <td>
                             <input type="file" id="files" name="files" accept=".png, .jpg, .jpeg" />
                         </td>
                     </tr>
                 </table>
                 <p id="demo" style="color: red"></p>
-                <button type="submit" onsubmit="validateFileType()" class="btn btn-primary">Přidat</button>
+                <button type="submit" class="btn btn-primary">Přidat</button>
             </form>
+            <div style=color:red>
+                @ViewBag.Validace
+            </div>
         </main>
     </div>
-        <script type="text/javascript">
-            function validateFileType(){
-            var fileName = document.getElementById("picture").value;
-            var idxDot = fileName.lastIndexOf(".") + 1;
-            var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
-            if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
-                //TO DO
-            }else{
-                alert("Only jpg/jpeg and png files are allowed!");
-            }
-        }
-    </script>
+
 </body>
 </html>
