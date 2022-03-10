@@ -11,8 +11,7 @@ using System.IO;
 using System.Linq;
 using Ucebnice.Models;
 using System.Text.RegularExpressions;
-
-
+using System.Collections.Generic;
 
 namespace Ucebnice.Controllers
 {
@@ -30,7 +29,7 @@ namespace Ucebnice.Controllers
         {
             ViewBag.Active = "index";
 
-            ArrayList Nazev = existujici_ucebnice();
+            ArrayList Nazev = Existujici_ucebnice();
             ArrayList Metadata = new ArrayList();
 
 
@@ -53,34 +52,39 @@ namespace Ucebnice.Controllers
         {
             bool isAuthenticated = User.Identity.IsAuthenticated;
             if (isAuthenticated) {
-                System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-                sw.Start();
-                ArrayList podKapitoly = new ArrayList();
-                string[] dirs = System.IO.Directory.GetDirectories(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}");
-                string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}", "*.md");
-                foreach (string file in files)
-                    podKapitoly.Add(Path.GetFileName(file));
 
-                if (dirs.Length == 0 && files.Length == 0) //pokud je adresář prázdný
+                var novyNavbar = new Dictionary<string, ArrayList>();
+
+                foreach (var d in System.IO.Directory.GetDirectories(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly"))
                 {
-                    string[] lines = { " ", "**Toto je úvodní kapitola**" };
-
-                    using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", ucebnice, "kapitoly", kapitola, podkapitola)))
+                    var dir = new DirectoryInfo(d);
+                    var dirName = dir.Name;
+                    string[] files1 = Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{dirName}\", "*.md");
+                    ArrayList podKapitoly1 = new ArrayList();
+                    foreach (string test in files1)
                     {
-                        foreach (string line in lines)
-                            outputFile.WriteLine(line);
+                        podKapitoly1.Add(Path.GetFileName(test));
                     }
+                    novyNavbar[dirName] = podKapitoly1;
 
                 }
 
-                sw.Stop();
-                string text = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{podkapitola}");
+                string text;
+                if (kapitola == "vyberKapitoly" & podkapitola == "vyberPodKapitoly")
+                {
+                    text = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\uvod.md");
+                }
+                else
+                {
+                    text = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{podkapitola}");
+
+                }
 
                 ViewBag.FileText = text;
                 ViewBag.Ucebnice = ucebnice;
-                ViewBag.PodKapitoly = podKapitoly;
-                ViewBag.PodKapitola = podkapitola;
                 ViewBag.Kapitola = kapitola;
+                ViewBag.PodKapitola = podkapitola;
+                ViewBag.NovyNavbar = novyNavbar;
 
                 return View("Markdown");
           }
@@ -152,10 +156,21 @@ namespace Ucebnice.Controllers
             if (isAuthenticated)
             {
                 System.IO.File.Delete(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{podkapitola}");
+
             return Redirect($"Markdown?ucebnice={ucebnice}&kapitola={kapitola}&podkapitola=1. Uvod.md");
             }
             return HttpUnauthorized();
-
+        }
+        [Authorize]
+        public IActionResult SmazatKapitolu(string ucebnice, string kapitola)
+        {
+            bool isAuthenticated = User.Identity.IsAuthenticated;
+            if (isAuthenticated)
+            {
+                System.IO.Directory.Delete(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\", true);
+                return Redirect($"Markdown?ucebnice={ucebnice}&kapitola=vyberKapitoly&podkapitola=vyberPodKapitoly");
+            }
+            return HttpUnauthorized();
         }
         [Authorize]
         public IActionResult NovaPodKapitola(string ucebnice, string kapitola)
@@ -181,13 +196,18 @@ namespace Ucebnice.Controllers
         }
         public IActionResult Text(string ucebnice, string kapitola, string podkapitola)
         {
+            string text;
+            if(kapitola == "vyberKapitoly" & podkapitola == "vyberPodKapitoly" )
+            {
+                text = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\uvod.md");
+            }
+            else {
+                text = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{podkapitola}"); 
             
-            string text = System.IO.File.ReadAllText(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{podkapitola}");
+            }
             var pipeline = new Markdig.MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
             var result = Markdig.Markdown.ToHtml(text, pipeline);
 
-            //string pattern = "<title1>[\\s\\S]*?<\\/title1>";
-            //result = Regex.Replace(result, pattern, "<h3 style='color:red'>lala</h3>");
             Regex regex = new Regex("(?<=&&POZNAMKA&&)(.*?)(?=&&POZNAMKA-KONEC&&)");
             MatchCollection matches = regex.Matches(text);
             Console.WriteLine("there were {0} matches", matches.Count);
@@ -198,18 +218,27 @@ namespace Ucebnice.Controllers
                 var tex = @$"&amp;&amp;POZNAMKA&amp;&amp;{match}&amp;&amp;POZNAMKA-KONEC&amp;&amp;";
                 result = result.Replace(tex, @$"<mark>{match}</mark>");
             }
+            var novyNavbar = new Dictionary<string, ArrayList>();
 
+            foreach (var d in System.IO.Directory.GetDirectories(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly"))
+            {
+                var dir = new DirectoryInfo(d);
+                var dirName = dir.Name;
+                string[] files1 = Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{dirName}\", "*.md");
+                ArrayList podKapitoly1 = new ArrayList();
+                foreach (string test in files1)
+                {
+                    podKapitoly1.Add(Path.GetFileName(test));
+                }
+                novyNavbar[dirName] = podKapitoly1 ;
 
-            ArrayList podKapitoly = new ArrayList();
-            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\", "*.md");
-            foreach (string file in files)
-                podKapitoly.Add(Path.GetFileName(file));
+            }
 
-            ViewBag.Kapitola = kapitola;
+            ViewBag.NovyNavbar = novyNavbar;
             ViewBag.Ucebnice = ucebnice;
-            ViewBag.PodKapitoly = podKapitoly;
-            ViewBag.PodKapitola = podkapitola;
             ViewBag.FileText = result;
+            ViewBag.Kapitola = kapitola;
+            ViewBag.PodKapitola = podkapitola;
             return View();
 
         }
@@ -232,7 +261,7 @@ namespace Ucebnice.Controllers
             bool isAuthenticated = User.Identity.IsAuthenticated;
             if (isAuthenticated)
             {
-                ArrayList ex_ucebnice = existujici_ucebnice();
+                ArrayList ex_ucebnice = Existujici_ucebnice();
 
             if(ex_ucebnice.Contains(nazev))
             {
@@ -271,7 +300,8 @@ namespace Ucebnice.Controllers
                         files.CopyTo(fs);
                         fs.Flush();
                     }
-                    return Redirect($"/");
+                        using(System.IO.File.Create(Directory.GetCurrentDirectory() + @$"\ucebnice\{nazev}\uvod.md"))
+                        return Redirect($"/");
 
                 }
                 ViewBag.Validace = "Obrázek nemá jeden z povolený formátů(.png, .jpeg, .gif, .jpg)";
@@ -308,7 +338,7 @@ namespace Ucebnice.Controllers
 
             return podKapitoly;
         }
-        static ArrayList existujici_ucebnice() //vrací učebnice, které jsou již vytvořené
+        static ArrayList Existujici_ucebnice() //vrací učebnice, které jsou již vytvořené
         {
             ArrayList existujici_ucebnice = new ArrayList();
 

@@ -78,8 +78,6 @@ C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\Text.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
-C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\_Layout2.cshtml.g.cs
-C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\_Layout3.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
@@ -176,3 +174,5 @@ C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\_ViewImport
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\_ViewStart.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\Uprava.cshtml.g.cs
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\_ViewLayout.cshtml.g.cs
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\_EditLayout.cshtml.g.cs

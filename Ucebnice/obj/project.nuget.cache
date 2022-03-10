@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kavnnzPzZIAVAF53Qydfo3YcqBOs14zwIwiAB9Phq3PEnEftsvEVkhyFUU99cm8yXkk5ykydLGzVfc21f6sWYQ==",
+  "dgSpecHash": "ZykUGD56OAeFRijMc1mBjM8UzDcb3MfEL/SIDEaVQyV5u5YD4lDSqS62XERZPrANSJmlltsnUzOLGnxzS7QLhw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Nel\\source\\repos\\Ucebnice\\Ucebnice\\Ucebnice.csproj",
   "expectedPackageFiles": [
@@ -145,7 +145,8 @@
     "C:\\Users\\Nel\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Nel\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Nel\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Nel\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\Nel\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\Nel\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.15\\microsoft.netcore.app.host.win-x64.5.0.15.nupkg.sha512"
   ],
   "logs": []
 }

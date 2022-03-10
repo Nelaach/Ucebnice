@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMboSYc6usUeI4EsUWCw7ewAAAAACAAAAAAAQZgAAAAEAACAAAACh/MNGLmlUB7STeP/qw8S29w9bQZ/t0E0H3hlrbc256QAAAAAOgAAAAAIAACAAAADDluNsYCA+IanAnWRSmtE9KxSvLmbyzEZUDlc9mJVUWyAAAABpUDr9wuO1KoaDgSEYHdh9wpeVl+MRDY7A5AF1fCBnY0AAAAAByf5fx5aWyiVx77Pep97VjdkRt7BTIAXpq/vnQEqoUEeAJw2aYgOXkZMTly9bJcughsj6bRyjjt43LOxDTwvs</EncryptedPassword>
+    <History>True|2022-01-09T15:51:58.0388420Z;False|2022-01-09T16:50:27.9133662+01:00;False|2022-01-09T16:47:52.8734990+01:00;False|2022-01-09T16:46:44.6548199+01:00;False|2022-01-09T16:45:54.2519124+01:00;False|2022-01-09T16:41:21.3826100+01:00;False|2022-01-09T16:36:45.6480323+01:00;False|2022-01-09T16:35:14.7569029+01:00;False|2022-01-09T16:34:30.4485825+01:00;True|2022-01-09T16:31:01.5305169+01:00;False|2022-01-09T16:30:34.8032027+01:00;True|2022-01-09T16:17:29.1705790+01:00;False|2022-01-09T16:16:26.3363181+01:00;False|2022-01-09T16:15:38.7677733+01:00;False|2022-01-09T16:14:41.5998181+01:00;False|2022-01-09T16:13:51.9333529+01:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=SQL5109.site4now.net%3bInitial Catalog=db_a7eea8_ucebnice%3bUser Id=db_a7eea8_ucebnice_admin%3bPassword=.ucebnice123</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Ucebnice.Data.ApplicationDbContext">
+      <Value>Data Source=SQL5109.site4now.net%3bInitial Catalog=db_a7eea8_ucebnice%3bUser Id=db_a7eea8_ucebnice_admin%3bPassword=.ucebnice123</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

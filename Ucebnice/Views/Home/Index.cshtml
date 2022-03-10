@@ -44,44 +44,24 @@
                     <div class="card" style="width: 20rem;">
                         <img class="card-img-top" src="~/obrazky/@obrazek" width="250" height="250" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">@nazev</h5>
+                            <h5 class="card-title"><a href="/home/Text?ucebnice=@nazev&kapitola=vyberKapitoly&podkapitola=vyberPodKapitoly">@nazev</a></h5>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><b>Autor:</b> @autor</li>
                             <li class="list-group-item"><b>Datum vytvoření:</b> @datum</li>
                         </ul>
-                        <div class="card-body">
-                            @if (SignInManager.IsSignedIn(User))
-                            {
-                                <a href="#" onclick="popup('@nazev', '@autor', '@content_prihlaseni')" class="card-link">Upravit učebnici</a>
-                            }
-                                <a href="#" onclick="popup('@nazev', '@autor', '@content_uzivatele')" class="card-link">Zobrazit učebnici</a>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <div class="card-body">
+
+                                <a href="home/Markdown?ucebnice=@nazev&kapitola=vyberKapitoly&podkapitola=vyberPodKapitoly" class="card-link">Upravit učebnici</a>
                                 
+
                             </div>
-                    </div>
+                        }
+                        </div>
                     <div>&nbsp;</div>
                     <div>&nbsp;</div>
-                    <script>
-
-                        function popup(nazev, autor, content_prihlaseni) {
-                            CreativaPopup.create(autor, nazev, '', {
-                                width: '400px', height: '500px', content: content_prihlaseni, isPage: false
-                            });
-                        }
-
-                        function textInput(ucebnice) {
-                            let kapitola = prompt("Napište název kapitoly", "");
-                            if (kapitola == null || kapitola == "") {
-                                alert("Nebyl vybrán žádný název pro kapitolu")
-                            } else {
-                                window.location.reload(true);
-                                window.location.href = "/home/NovaKapitola?ucebnice=" + ucebnice + "&kapitola=" + kapitola;
-
-
-                            }
-
-                        }
-                    </script>
                 </div>
 
             }

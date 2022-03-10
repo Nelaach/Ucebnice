@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="nelaach-001-site1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Nel\\source\\repos\\Ucebnice\\Ucebnice\\obj\\Release\\net5\.0\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="Ucebnice.Data.ApplicationDbContext" description="" value="Data Source=SQL5109.site4now.net;Initial Catalog=db_a7eea8_ucebnice;User Id=db_a7eea8_ucebnice_admin;Password=.ucebnice123" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\Nel\\source\\repos\\Ucebnice\\Ucebnice\\obj\\Release\\net5\.0\\PubTmp\\EFSQLScripts\\Ucebnice\.Data\.ApplicationDbContext\.sql$" />
+  </parameter>
+</parameters>
