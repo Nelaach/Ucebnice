@@ -28,17 +28,20 @@
             </div>
 
             <ul class="list-unstyled components">
+                <li><a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="ZobrazeniMetadat" asp-route-Ucebnice="@ViewBag.Ucebnice"> Základní informace </a></li>
+
                 @{int pokus = 1;}
-                @foreach (KeyValuePair<string, ArrayList>entry in @ViewBag.NovyNavbar)
+                @foreach (KeyValuePair<string, ArrayList> entry in @ViewBag.Kapitoly_podkapitoly)
                 {
                     Console.WriteLine(pokus);
                     <li>
                         <a href="#@pokus" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">@entry.Key</a>
                         <ul class="collapse list-unstyled" id="@pokus">
-                            @{pokus = pokus+1;}
-                            @foreach (string podKapitola in @ViewBag.NovyNavbar[entry.Key])
+                            @{pokus = pokus + 1;}
+                            @foreach (string podKapitola in @ViewBag.Kapitoly_podkapitoly[entry.Key])
                             {
-                            <li><a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="Text" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@entry.Key" asp-route-podkapitola="@podKapitola"> @podKapitola</a></li>
+                                string uprava = podKapitola.Remove(podKapitola.Length - 3);
+                                <li><a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="ZobrazeniUcebnice" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@entry.Key" asp-route-podkapitola="@podKapitola"> @uprava</a></li>
                             }
 
                         </ul>

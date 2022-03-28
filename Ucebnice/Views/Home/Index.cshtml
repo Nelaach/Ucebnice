@@ -3,48 +3,37 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-        <head>
-            <script src="https://creativajs.altervista.org/popup/0.2/creativa-popup.js"></script>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+    <script src="https://creativajs.altervista.org/popup/0.2/creativa-popup.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <style>
 
-        </head>
+        .right {
+            position: absolute;
+            right: 20px;
+        }
+    </style>
+
+</head>
+<div>&nbsp;</div>
     <div class="container">
         <div class="row">
 
-            @foreach (string metadata in ViewBag.data)
+            @foreach (List<string> metadata in ViewBag.Metadata)
             {
 
-                List<string> stringList = metadata.Split('ß').ToList();
-                string nazevSmezerou = stringList[1].Remove(stringList[1].Length - 1);
-                string nazev = nazevSmezerou.Remove(nazevSmezerou.Length - 1);
-
-                string autorSmezerou = stringList[2];
-                string autor = autorSmezerou.Remove(autorSmezerou.Length - 2); //dva znaky navíc
-                string datum = stringList[3];
-                string obrazek = nazev + stringList[4];
+                string nazev = metadata[0];
+                string autor = metadata[1];
+                string datum = metadata[2];
+                string obrazek = nazev + metadata[3];
                 string aktualniAdresar = Directory.GetCurrentDirectory();
-                string zk = "'" + nazev + "'";
-                string content_prihlaseni = $@"<div style=text-align:center><a href=# onClick=textInput(""{nazev}"");>Nová kapitola</a></div><hr>";
-                string content_uzivatele = "<hr>";
-
-                string kapitoly = Directory.GetCurrentDirectory() + $@"\ucebnice\{nazev}\kapitoly";
-                List<string> podKapitoly = new List<string>();
-                Console.WriteLine(nazev + autor);
-                foreach (var d in System.IO.Directory.GetDirectories(kapitoly))
-                {
-                    var dir = new DirectoryInfo(d);
-                    var dirName = dir.Name;
-                    podKapitoly.Add(dirName);
-                    content_prihlaseni = content_prihlaseni + @$"<h5 style=text-align:left><a href=""/home/Markdown?ucebnice={nazev}&kapitola={dirName}&podkapitola=1. uvod.md"">{dirName}<a></h5>";
-                    content_uzivatele = content_uzivatele + @$"<h5 style=text-align:left><a href=""/home/Text?ucebnice={nazev}&kapitola={dirName}&podkapitola=1. uvod.md"">{dirName}<a></h5>";
-                }
 
                 <div class="col-sm">
                     <div class="card" style="width: 20rem;">
                         <img class="card-img-top" src="~/obrazky/@obrazek" width="250" height="250" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="/home/Text?ucebnice=@nazev&kapitola=vyberKapitoly&podkapitola=vyberPodKapitoly">@nazev</a></h5>
+                            <h5 class="card-title"><a href="/home/ZobrazeniMetadat?ucebnice=@nazev">@nazev</a></h5>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><b>Autor:</b> @autor</li>
@@ -52,14 +41,24 @@
                         </ul>
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <div class="card-body">
+                    <div class="card-body">
+                        <a href="home/UpravaMetadat?ucebnice=@nazev" class="card-link">Upravit učebnici</a>
+                        <a class="alert-danger right" asp-area="" asp-controller="Home" asp-action="SmazatUcebnici" asp-route-ucebnice="@nazev" onclick="if (confirm('Opravdu si přejete smazat @nazev učebnici?')){return true;}else{event.stopPropagation(); event.preventDefault();};">Smazat</a>
 
-                                <a href="home/Markdown?ucebnice=@nazev&kapitola=vyberKapitoly&podkapitola=vyberPodKapitoly" class="card-link">Upravit učebnici</a>
-                                
-
-                            </div>
+                    </div>
+                            <script>
+                                // The function below will start the confirmation dialog
+                                function confirmAction() {
+                                    let confirmAction = confirm("Opravdu si přejete smazat tuhle učebnici?");
+                                    if (confirmAction) {
+                                        window.location.href = "/home/SmazatUcebnici?ucebnice=@nazev";
+                                    } else {
+                                        alert("Akce zrušena");
+                                    }
+                                }
+                            </script>
                         }
-                        </div>
+                    </div>
                     <div>&nbsp;</div>
                     <div>&nbsp;</div>
                 </div>

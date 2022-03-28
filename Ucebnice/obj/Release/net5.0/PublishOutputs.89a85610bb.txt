@@ -1,5 +1,6 @@
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\Ucebnice.exe
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\css\site.css
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\css\style_navbar.css
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\js\site.js
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -35,11 +36,18 @@ C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroo
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\jquery\dist\jquery.min.map
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\jquery\LICENSE.txt
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\3.png
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\ahojky.png
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\Greenfoot.jpg
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\Javascript.png
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\Pikachu.png
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\Pokus.png
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\pridani.png
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\Python.jpg
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\Sledování2.png
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\Slovensko.png
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\SlovenskoJeNeporazitelne.png
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\SnadSeNemylim.png
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\obrazky\struktura_ucebnice.png
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\appsettings.json
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\bower.json
@@ -164,6 +172,8 @@ C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\runtim
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\Ucebnice.Views.dll
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\Ucebnice.Views.pdb
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\Identity\css\site.css
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\Identity\favicon.ico
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\Identity\js\site.js
@@ -200,6 +210,4 @@ C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroo
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\Identity\lib\jquery\dist\jquery.min.js
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\Identity\lib\jquery\dist\jquery.min.map
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\wwwroot\Identity\lib\jquery\LICENSE.txt
-C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\Ucebnice.Views.dll
-C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\Ucebnice.Views.pdb
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\PubTmp\Out\Ucebnice.deps.json

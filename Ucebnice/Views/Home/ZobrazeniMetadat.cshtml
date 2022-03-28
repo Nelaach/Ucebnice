@@ -1,0 +1,25 @@
+﻿
+<div class="container">
+    <main role="main" class="pb-3">
+        <form method="post" name="myForm" enctype="multipart/form-data" asp-controller="Home" asp-action="NovaUcebnice">
+            <table class="table table-borderless" style="width:40%">
+                <tr>
+                    <th>Název učebnice: </th>
+                    <td>
+                        @ViewBag.Metadata[0]
+                    </td>
+                </tr>
+                <tr style="width:10%">
+                    <th>Autor učebnice: </th>
+                    <td>@ViewBag.Metadata[1]</td>
+                </tr>
+                <tr>
+                    <th>Datum vytvoření: </th>
+                    <td>@ViewBag.Metadata[2]</td>
+                </tr>
+            </table>
+            <img src=~/obrazky/@ViewBag.Metadata[0]@ViewBag.Metadata[3]>
+
+        </form>
+    </main>
+</div>

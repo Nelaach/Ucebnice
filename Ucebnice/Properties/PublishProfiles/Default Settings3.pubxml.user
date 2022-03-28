@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <History>True|2022-03-27T10:00:01.8016299Z;False|2022-03-27T11:50:44.4968461+02:00;False|2022-03-27T11:50:18.6421308+02:00;True|2022-03-27T11:34:55.2645786+02:00;True|2022-03-27T11:26:58.5323171+02:00;False|2022-03-27T11:23:33.1295608+02:00;False|2022-03-27T11:22:36.2775561+02:00;False|2022-03-27T11:21:24.0222722+02:00;True|2022-03-27T11:13:02.8664740+02:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=SQL5107.site4now.net%3bInitial Catalog=db_a84036_nelinkaxd%3bUser Id=db_a84036_nelinkaxd_admin%3bPassword=Administrator123%2a</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Ucebnice.Data.ApplicationDbContext">
+      <Value>Data Source=SQL5107.site4now.net%3bInitial Catalog=db_a84036_nelinkaxd%3bUser Id=db_a84036_nelinkaxd_admin%3bPassword=Administrator123%2a</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

@@ -1,4 +1,4 @@
-ßPython
-ßZdeněk Novák
-ß08/09/2021
-ß.jpg
+Python
+Zdeněk Novák
+08/09/2021
+.jpg

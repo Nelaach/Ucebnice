@@ -1,0 +1,123 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <!--  jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+    <style>
+
+        .container {
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #cccaca;
+        }
+
+        input[type=text] {
+            width: 100%;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <h3 class="text-center"> Vytvoření učebnice </h3>
+        <div>&nbsp;</div>
+
+        <main role="main" class="pb-3">
+            <form method="post" name="myForm" enctype="multipart/form-data" asp-controller="Home" asp-action="VytvoreniUcebnice">
+                <table>
+                    <tr>
+                        <td>* Název učebnice: </td>
+                        <td><input type="text" required id="nazev" name="nazev" /></td>
+                    </tr>
+                    <tr>
+                        <td>* Autor: </td>
+                        <td><input type="text" required id="autor" name="autor" /></td>
+                    </tr>
+                    <tr>
+                        <td>Datum vzniku učebnice:</td>
+                        <td>
+                                <input type="date" id="datum" name="datum">
+  
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>* Výběr obrázku:</td>
+                        <td>
+                            <input type="file" id="obrazek" name="obrazek" accept=".png, .jpg, .jpeg" />
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit" class="btn btn-primary">Vytvořit</button>
+            </form>
+            <div style=color:red>
+                @ViewBag.ValidaceVytvoreni
+            </div>
+        </main>
+    </div>
+    <div>&nbsp;</div>
+    <div class="container">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <h3 class="text-center"> Přidání učebnice </h3>
+
+        Ukázka zazipované struktury učebnice:
+        <a class="btn" style="background:grey; color:aliceblue;" onclick="if(document.getElementById('skrytyText') .style.display=='none') {document.getElementById('skrytyText') .style.display=''}else{document.getElementById('skrytyText') .style.display='none'}">Zobrazit/Skrýt</a>
+        <div id="skrytyText" style="display:none">
+            <img src="~/obrazky/struktura_ucebnice.png" alt="Struktura učebnice" height="500" />
+        </div>
+        <div>&nbsp;</div>
+        <main role="main" class="pb-3">
+            <form method="post" name="myForm" enctype="multipart/form-data" asp-controller="Home" asp-action="PridaniUcebnice">
+                <table>
+                    <tr>
+                        <td>* Název učebnice: </td>
+                        <td><input type="text" id="nazev" name="nazev" required /></td>
+                    </tr>
+                    <tr>
+                        <td>* Autor: </td>
+                        <td><input type="text" id="autor" name="autor" required /></td>
+                    </tr>
+                    <tr>
+                        <td>Datum vzniku učebnice:</td>
+                        <td>
+                            <input type="date" id="datum" name="datum">
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Výběr obrázku:</td>
+                        <td>
+                            <input type="file" id="obrazek" name="obrazek" accept=".png, .jpg, .jpeg" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>* Nahrání učenice:</td>
+                        <td>
+                            <input type="file" id="ucebnice" name="ucebnice" accept=".zip" />
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit" class="btn btn-primary">Přidat</button>
+            </form>
+            <div style=color:red>
+                @ViewBag.ValidacePridani
+            </div>
+        </main>
+    </div>
+</body>
+</html>

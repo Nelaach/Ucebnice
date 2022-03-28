@@ -1,4 +1,4 @@
-ßJavascript
-ßDavid Hrachovský
-ß09/16/2022
-ß.png
+Javascript
+David Hrachovský
+09/16/2022
+.png

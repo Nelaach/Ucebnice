@@ -73,9 +73,6 @@ C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Ucebnice.TagHelpe
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Ucebnice.RazorCoreGenerate.cache
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\Markdown.cshtml.g.cs
-C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\NovaUcebnice.cshtml.g.cs
-C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\Text.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
@@ -173,6 +170,10 @@ C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\_LoginParti
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\_ViewImports.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\_ViewStart.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
-C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\Uprava.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\_ViewLayout.cshtml.g.cs
 C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Shared\_EditLayout.cshtml.g.cs
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\ZobrazeniUcebnice.cshtml.g.cs
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\UpravaUcebnice.cshtml.g.cs
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\FormularUcebnice.cshtml.g.cs
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\UpravaMetadat.cshtml.g.cs
+C:\Users\Nel\source\repos\Ucebnice\Ucebnice\obj\Release\net5.0\Razor\Views\Home\ZobrazeniMetadat.cshtml.g.cs

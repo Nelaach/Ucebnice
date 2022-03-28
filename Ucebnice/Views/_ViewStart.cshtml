@@ -1,11 +1,14 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    string[] lines = {"Markdown", "Uprava" };
-    if (lines.Contains(ViewContext.RouteData.Values["action"].ToString()))
+    string[] logged_user = {"UpravaUcebnice", "UpravaMetadat" };
+    string[] not_logged_in_user = { "ZobrazeniUcebnice", "ZobrazeniMetadat" };
+
+    if (logged_user.Contains(ViewContext.RouteData.Values["action"].ToString()))
     {
         Layout = "~/Views/Shared/_EditLayout.cshtml";
     }
-    else if(ViewContext.RouteData.Values["action"].ToString() == "Text")
+    else if (not_logged_in_user.Contains(ViewContext.RouteData.Values["action"].ToString()))
+
         Layout = "~/Views/Shared/_ViewLayout.cshtml";
     else
         Layout = "~/Views/Shared/_Layout.cshtml";

@@ -29,31 +29,36 @@
             </div>
 
             <ul class="list-unstyled components">
+                <li><a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="UpravaMetadat" asp-route-Ucebnice="@ViewBag.Ucebnice"> Základní informace </a></li>
+
                 @{int pokus = 1;}
                 @foreach (KeyValuePair
-                <string, ArrayList>
-                    entry in @ViewBag.NovyNavbar)
-                    {
-                    Console.WriteLine(pokus);
+               <string, ArrayList>
+                   entry in @ViewBag.Kapitoly_podkapitoly)
+                {
                     <li>
                         <a href="#@pokus" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">@entry.Key</a>
                         <ul class="collapse list-unstyled" id="@pokus">
-                            @{pokus = pokus+1;}
-                            @foreach (string podKapitola in @ViewBag.NovyNavbar[entry.Key])
+                            @{pokus = pokus + 1;}
+                            @foreach (string podKapitola in @ViewBag.Kapitoly_podkapitoly[entry.Key])
                             {
-                            <li><a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="Markdown" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@entry.Key" asp-route-podkapitola="@podKapitola"> @podKapitola</a></li>
+                                string uprava = podKapitola.Remove(podKapitola.Length - 3);
+
+                                <li><a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="UpravaUcebnice" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@entry.Key" asp-route-podkapitola="@podKapitola"> @uprava</a></li>
                             }
+                            
+                            <li><a class="nav-link navbar-dark" style="background-color:darkgrey" href=# onClick='novaPodKapitola("@ViewBag.Ucebnice", "@entry.Key")'> Přidat podkapitolu</a></li>
 
                         </ul>
                     </li>
-                    }
+                }
 
             </ul>
 
             <ul class="list-unstyled CTAs">
 
                 <li>
-                    <a href=# onClick=novaKapitola("@ViewBag.Ucebnice") class="article">Nová kapitola</a>
+                    <a href=# onClick=novaKapitola("@ViewBag.Ucebnice") class="article">Přidat kapitolu</a>
                     <a href=# onClick=smazatKapitolu("@ViewBag.Ucebnice") class="article">Smazat kapitolu</a>
 
                 </li>
@@ -108,6 +113,17 @@
             } else {
                 window.location.reload(true);
                 window.location.href = "/home/NovaKapitola?ucebnice=" + ucebnice + "&kapitola=" + kapitola;
+            }
+        }
+        function novaPodKapitola(ucebnice, kapitola) {
+            console.log(ucebnice, kapitola);
+            let podkapitola = prompt("Napište název podkapitoly", "");
+            if (podkapitola == null || podkapitola == "") {
+                alert("Nebyl vybrán žádný název pro podkapitolu")
+            } else {
+                console.log(podkapitola);
+                window.location.reload(true);
+                window.location.href = "/home/NovaPodKapitola?ucebnice=" + ucebnice + "&kapitola=" + kapitola + "&podkapitola=" + podkapitola;
             }
         }
         function smazatKapitolu(ucebnice) {

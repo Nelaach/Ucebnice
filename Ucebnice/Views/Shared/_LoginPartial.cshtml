@@ -5,7 +5,7 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
-        <li class="@( ViewBag.Active == "nova_ucebnice" ? "nav-item active" : "")"> <a class="nav-link" asp-area="" asp-controller="Home" asp-action="NovaUcebnice">Nová učebnice</a></li>
+        <li class="@( ViewBag.Active == "nova_ucebnice" ? "nav-item active" : "")"> <a class="nav-link" asp-area="" asp-controller="Home" asp-action="FormularUcebnice">Nová učebnice</a></li>
 
         <li class="nav-item">
             <a class="nav-link" asp-area="Identity" asp-page="/Account/logout" title="Manage">Odhlásit se</a>
@@ -14,9 +14,6 @@
     }
     else
     {
-        <li class="nav-item">
-            <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Registrace</a>
-        </li>
         <li class="nav-item">
             <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Přihlášení</a>
         </li>

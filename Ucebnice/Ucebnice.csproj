@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ucebnice\Greenfoot\kapitoly\" />
+    <Folder Include="wwwroot\ucebnice\" />
   </ItemGroup>
 
 </Project>
