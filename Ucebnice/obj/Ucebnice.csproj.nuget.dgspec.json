@@ -40,17 +40,17 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "HtmlSanitizer": {
+              "target": "Package",
+              "version": "[7.1.488, )"
+            },
             "Markdig": {
               "target": "Package",
-              "version": "[0.25.0, )"
+              "version": "[0.28.1, )"
             },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.7, )"
-            },
-            "Microsoft.AspNetCore.Http": {
-              "target": "Package",
-              "version": "[2.2.2, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
@@ -73,10 +73,6 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
-            },
-            "SixLabors.ImageSharp": {
-              "target": "Package",
-              "version": "[1.0.3, )"
             }
           },
           "imports": [

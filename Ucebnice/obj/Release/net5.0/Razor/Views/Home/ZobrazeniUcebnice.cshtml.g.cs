@@ -13,13 +13,6 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 2 "C:\Users\Nel\source\repos\Ucebnice\Ucebnice\_ViewImports.cshtml"
-using Ucebnice.Areas.Identity;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 1 "C:\Users\Nel\source\repos\Ucebnice\Ucebnice\Views\_ViewImports.cshtml"
 using Ucebnice;
 
@@ -41,7 +34,6 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"86e87b0f695cfefe817bc35f340da8288ecac99a", @"/Views/Home/ZobrazeniUcebnice.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"758607f68e04b2b44a8fad5b4bf0ad5bfece4d1d", @"/_ViewImports.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"80ec0f612acbb947172444e03e4e2ceab8229abc", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Home_ZobrazeniUcebnice : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
@@ -85,7 +77,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html>\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86e87b0f695cfefe817bc35f340da8288ecac99a5086", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86e87b0f695cfefe817bc35f340da8288ecac99a4752", async() => {
                 WriteLiteral("\r\n    <style>\r\n        title1 {\r\n            color: red;\r\n        }\r\n\r\n        title3 {\r\n            color: blue;\r\n        }\r\n    </style>\r\n");
             }
             );
@@ -99,7 +91,7 @@ using Microsoft.AspNetCore.Identity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86e87b0f695cfefe817bc35f340da8288ecac99a6212", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86e87b0f695cfefe817bc35f340da8288ecac99a5878", async() => {
                 WriteLiteral("\r\n\r\n    <div class=\"container\">\r\n        ");
 #nullable restore
 #line 25 "C:\Users\Nel\source\repos\Ucebnice\Ucebnice\Views\Home\ZobrazeniUcebnice.cshtml"
@@ -118,7 +110,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
                 WriteLiteral("            <br />\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86e87b0f695cfefe817bc35f340da8288ecac99a7041", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86e87b0f695cfefe817bc35f340da8288ecac99a6707", async() => {
                     WriteLiteral("\r\n                <input type=\"button\" class=\"btn btn-primary\" value=\"Upravit\" />\r\n            ");
                 }
                 );

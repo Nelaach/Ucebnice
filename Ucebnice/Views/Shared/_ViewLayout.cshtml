@@ -31,18 +31,30 @@
                 <li><a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="ZobrazeniMetadat" asp-route-Ucebnice="@ViewBag.Ucebnice"> Základní informace </a></li>
 
                 @{int pokus = 1;}
-                @foreach (KeyValuePair<string, ArrayList> entry in @ViewBag.Kapitoly_podkapitoly)
+                @foreach (KeyValuePair<string, List<Tuple<string, string>>> entry in @ViewBag.Kapitoly_podkapitoly)
                 {
                     Console.WriteLine(pokus);
                     <li>
                         <a href="#@pokus" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">@entry.Key</a>
                         <ul class="collapse list-unstyled" id="@pokus">
                             @{pokus = pokus + 1;}
-                            @foreach (string podKapitola in @ViewBag.Kapitoly_podkapitoly[entry.Key])
+                            @foreach (var item in entry.Value)
                             {
-                                string uprava = podKapitola.Remove(podKapitola.Length - 3);
-                                <li><a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="ZobrazeniUcebnice" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@entry.Key" asp-route-podkapitola="@podKapitola"> @uprava</a></li>
+                                string soubor = item.Item1.Remove(item.Item1.Length - 3);
+
+
+                                if (item.Item2 != "")
+                                {
+                                    string heading = item.Item2.Remove(0, 1);
+                                    <li><a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="ZobrazeniUcebnice" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@entry.Key" asp-route-podkapitola="@item.Item1"> @heading</a></li>
+                                }
+                                else
+                                {
+                                    <li><a class="nav-link navbar-dark" asp-area="" asp-controller="Home" asp-action="ZobrazeniUcebnice" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@entry.Key" asp-route-podkapitola="@item.Item1"> @soubor</a></li>
+                                }
+
                             }
+                            
 
                         </ul>
                     </li>

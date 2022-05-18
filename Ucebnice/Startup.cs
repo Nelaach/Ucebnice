@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ucebnice.Data;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace Ucebnice
 {
@@ -40,6 +42,7 @@ namespace Ucebnice
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -51,13 +54,24 @@ namespace Ucebnice
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseAuthentication();
+
             app.UseAuthorization();
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                 Path.Combine(env.ContentRootPath, "Ucebnice")),
+                RequestPath = "/Ucebnice"
+            });
+
 
             app.UseEndpoints(endpoints =>
             {

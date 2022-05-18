@@ -31,7 +31,7 @@
 
                 <div class="col-sm">
                     <div class="card" style="width: 20rem;">
-                        <img class="card-img-top" src="~/obrazky/@obrazek" width="250" height="250" alt="Card image cap">
+                        <a href="/home/ZobrazeniMetadat?ucebnice=@nazev"><img class="card-img-top" src="~/obrazky/@obrazek" width="250" height="250" alt="Card image cap"></a>
                         <div class="card-body">
                             <h5 class="card-title"><a href="/home/ZobrazeniMetadat?ucebnice=@nazev">@nazev</a></h5>
                         </div>
@@ -42,7 +42,7 @@
                         @if (SignInManager.IsSignedIn(User))
                         {
                     <div class="card-body">
-                        <a href="home/UpravaMetadat?ucebnice=@nazev" class="card-link">Upravit učebnici</a>
+                        <a href="home/UpravaMetadat?ucebnice=@nazev">Upravit učebnici</a>
                         <a class="alert-danger right" asp-area="" asp-controller="Home" asp-action="SmazatUcebnici" asp-route-ucebnice="@nazev" onclick="if (confirm('Opravdu si přejete smazat @nazev učebnici?')){return true;}else{event.stopPropagation(); event.preventDefault();};">Smazat</a>
 
                     </div>

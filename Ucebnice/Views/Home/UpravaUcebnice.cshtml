@@ -10,12 +10,22 @@
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 </head>
 <body>
+    @if (ViewBag.Validace == "Učebnice nebyla přejmenována, protože tento název učebnice již existuje.")
+    {
+        <div style="color:red"><b>@ViewBag.Validace</b></div>
+        <div>&nbsp;</div>
 
+    }
+    else
+    {
+        <div style="color:green"><b>@ViewBag.Validace</b></div>
+        <div>&nbsp;</div>
+
+    }
     <div id="main">
 
         <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="UpravaUcebnicePost" asp-route-Ucebnice="@ViewBag.Ucebnice" asp-route-kapitola="@ViewBag.Kapitola" asp-route-podkapitola="@ViewBag.PodKapitola">
             Kapitola: <input type="text" name="zmena_nazvu" value="@ViewBag.podKapitola.Remove(ViewBag.podKapitola.Length - 3)">.md
-            @ViewBag.Validace
             <div>&nbsp</div>
             <textarea id="file-input" name="text">@ViewBag.FileText</textarea>
             <input class="btn btn-success" type="submit" value="Uložit" />

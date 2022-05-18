@@ -13,8 +13,7 @@ using Ucebnice.Models;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.IO.Compression;
-using System.Text;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace Ucebnice.Controllers
 {
@@ -22,11 +21,11 @@ namespace Ucebnice.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -37,6 +36,18 @@ namespace Ucebnice.Controllers
         [Authorize]
         public IActionResult UpravaUcebnice(string ucebnice, string kapitola, string podkapitola) //Text v Markdownu k upravení
         {
+            try
+            {
+                TempData["shortMessage"].ToString();
+            }
+            catch(NullReferenceException)
+            {
+                TempData["shortMessage"] = "";
+            }
+            finally
+            {
+                ViewBag.Validace = TempData["shortMessage"];
+            }
             bool isAuthenticated = User.Identity.IsAuthenticated;
             if (isAuthenticated)
             {
@@ -68,6 +79,9 @@ namespace Ucebnice.Controllers
                     Console.WriteLine("žádna kapitolka");
                 }
                 string text = HttpContext.Request.Form["text"];
+                text = text.Remove(text.Length - 2);
+                text = text.Replace("<", "&lt;");
+
                 string zmena_nazvu = HttpContext.Request.Form["zmena_nazvu"];
                 zmena_nazvu = zmena_nazvu + ".md";
                 using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", ucebnice, "kapitoly", kapitola, podkapitola)))
@@ -76,17 +90,21 @@ namespace Ucebnice.Controllers
                 }
                 if (podkapitola != zmena_nazvu)
                 {
-                    if(! System.IO.File.Exists(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{zmena_nazvu}")) { 
+                    if (!System.IO.File.Exists(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{zmena_nazvu}"))
+                    {
                         System.IO.File.Move(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{podkapitola}", Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\{zmena_nazvu}");
+                        TempData["shortMessage"] = "Úspěšně uloženo a přejmenováno";
                         return Redirect($"UpravaUcebnice?ucebnice={ucebnice}&kapitola={kapitola}&podkapitola={zmena_nazvu}");
-                        }
+                    }
                     else
                     {
+                        TempData["shortMessage"] = "Učebnice nebyla přejmenována, protože tento název učebnice již existuje.";
                         return Redirect($"UpravaUcebnice?ucebnice={ucebnice}&kapitola={kapitola}&podkapitola={podkapitola}");
                     }
                 }
                 else
                 {
+                    TempData["shortMessage"] = "Úspěšně uloženo";
                     return Redirect($"UpravaUcebnice?ucebnice={ucebnice}&kapitola={kapitola}&podkapitola={podkapitola}");
                 }
             }
@@ -99,7 +117,7 @@ namespace Ucebnice.Controllers
             bool isAuthenticated = User.Identity.IsAuthenticated;
             if (isAuthenticated)
             {
-                System.IO.Directory.Delete(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}",true);
+                System.IO.Directory.Delete(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}", true);
                 return Index();
             }
             return HttpUnauthorized();
@@ -125,8 +143,17 @@ namespace Ucebnice.Controllers
             bool isAuthenticated = User.Identity.IsAuthenticated;
             if (isAuthenticated)
             {
-                System.IO.Directory.Delete(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\", true);
-                return Redirect($"UpravaMetadat?ucebnice={ucebnice}");
+                if (Directory.Exists(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\"))
+                {
+                    System.IO.Directory.Delete(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{kapitola}\", true);
+                    return Redirect($"UpravaMetadat?ucebnice={ucebnice}");
+                }
+                else
+                {
+                    return Redirect($"UpravaMetadat?ucebnice={ucebnice}");
+
+                }
+
             }
             return HttpUnauthorized();
         }
@@ -160,7 +187,7 @@ namespace Ucebnice.Controllers
             bool isAuthenticated = User.Identity.IsAuthenticated;
             if (isAuthenticated)
             {
-                if (! System.IO.File.Exists(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", ucebnice, "kapitoly", kapitola, podkapitola)))
+                if (!System.IO.File.Exists(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", ucebnice, "kapitoly", kapitola, podkapitola)))
                 {
                     using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", ucebnice, "kapitoly", kapitola, podkapitola)))
                     {
@@ -238,7 +265,8 @@ namespace Ucebnice.Controllers
 
                 if (nazev != null && obrazek != null && autor != null && ucebnice != null)
                 {
-                    if(nazev.All(c => Char.IsLetterOrDigit(c) || c.Equals('_') || c.Equals('-'))) { 
+                    if (nazev.All(c => Char.IsLetterOrDigit(c) || c.Equals('_') || c.Equals('-')))
+                    {
                         var nazev_obrazku = Path.GetFileName(obrazek.FileName);
                         var nazev_ucebnice = Path.GetFileName(ucebnice.FileName);
                         var pripona_obrazku = Path.GetExtension(nazev_obrazku);
@@ -314,36 +342,36 @@ namespace Ucebnice.Controllers
                     if (nazev.All(c => Char.IsLetterOrDigit(c) || c.Equals('_') || c.Equals('-')))
                     {
 
-                    var nazev_obrazku = Path.GetFileName(obrazek.FileName);
-                    var pripona_obrazku = Path.GetExtension(nazev_obrazku);
-                    string[] lines = { nazev, autor, datum, pripona_obrazku };
-                    string[] povoleny_format_obrazku = { ".gif", ".jpeg", ".png", ".jpg" };
+                        var nazev_obrazku = Path.GetFileName(obrazek.FileName);
+                        var pripona_obrazku = Path.GetExtension(nazev_obrazku);
+                        string[] lines = { nazev, autor, datum, pripona_obrazku };
+                        string[] povoleny_format_obrazku = { ".gif", ".jpeg", ".png", ".jpg" };
 
-                    var newFileName = String.Concat(nazev, pripona_obrazku); //Vytvořen z názvu učebnice a přípony
+                        var newFileName = String.Concat(nazev, pripona_obrazku); //Vytvořen z názvu učebnice a přípony
 
-                    if (povoleny_format_obrazku.Contains(pripona_obrazku))
-                    {
-                        Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", nazev, "kapitoly"));
-                        using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", nazev, $"metadata.txt")))
+                        if (povoleny_format_obrazku.Contains(pripona_obrazku))
                         {
-                            foreach (string line in lines)
-                                outputFile.WriteLine(line);
+                            Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", nazev, "kapitoly"));
+                            using (StreamWriter outputFile = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "ucebnice", nazev, $"metadata.txt")))
+                            {
+                                foreach (string line in lines)
+                                    outputFile.WriteLine(line);
+                            }
+
+
+                            var filepath = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "obrazky")).Root + $@"\{newFileName}";
+                            using (FileStream fs = System.IO.File.Create(filepath))
+                            {
+                                obrazek.CopyTo(fs);
+                                fs.Flush();
+                            }
+                            using (System.IO.File.Create(Directory.GetCurrentDirectory() + @$"\ucebnice\{nazev}\uvod.md"))
+                                return Redirect($"/");
+
+
                         }
-
-
-                        var filepath = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "obrazky")).Root + $@"\{newFileName}";
-                        using (FileStream fs = System.IO.File.Create(filepath))
-                        {
-                            obrazek.CopyTo(fs);
-                            fs.Flush();
-                        }
-                        using (System.IO.File.Create(Directory.GetCurrentDirectory() + @$"\ucebnice\{nazev}\uvod.md"))
-                            return Redirect($"/");
-
-
-                    }
-                    ViewBag.ValidaceVytvoreni = "Obrázek nemá jeden z povolený formátů(.png, .jpeg, .gif, .jpg)";
-                    return FormularUcebnice();
+                        ViewBag.ValidaceVytvoreni = "Obrázek nemá jeden z povolený formátů(.png, .jpeg, .gif, .jpg)";
+                        return FormularUcebnice();
                     }
 
                     ViewBag.ValidaceVytvoreni = "Učebnice nesmí obsahovat speciální znaky v názvu a mezeru (může obsahovat pouze čísla, písmena, podtržítko a pomlčku)";
@@ -387,20 +415,40 @@ namespace Ucebnice.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        static Dictionary<string, ArrayList> get_kapitoly_podkapitoly(string ucebnice) //vrací podkapitoly a kapitoly
+        static Dictionary<string, List<Tuple<string, string>>> get_kapitoly_podkapitoly(string ucebnice) //vrací podkapitoly a kapitoly
         {
-            var kapitoly_podkapitoly = new Dictionary<string, ArrayList>();
+            var kapitoly_podkapitoly = new Dictionary<string, List<Tuple<string, string>>>();
             foreach (var d in System.IO.Directory.GetDirectories(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly"))
             {
                 var dir = new DirectoryInfo(d);
                 var dirName = dir.Name;
                 string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\ucebnice\{ucebnice}\kapitoly\{dirName}\", "*.md");
                 ArrayList podKapitoly = new ArrayList();
+                var list = new List<Tuple<string,string>>();
+                
+
                 foreach (string test in files)
                 {
-                    podKapitoly.Add(Path.GetFileName(test));
+                    String text = System.IO.File.ReadAllText(test);
+                    var pipeline = new Markdig.MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+                    var result = Markdig.Markdown.ToHtml(text, pipeline);
+
+                    Regex regex = new Regex("(^# )(.*)");
+                    var match = regex.Match(text);
+                    string match_value = match.Value;
+                    if(match_value.Length > 2)
+                    {
+                        match_value = match_value.Remove(0, 1);
+                        list.Add(new Tuple<string, string>(Path.GetFileName(test), match_value));
+
+                    }
+                    else
+                    {
+                        list.Add(new Tuple<string, string>(Path.GetFileName(test), ""));
+                    }
                 }
-                kapitoly_podkapitoly[dirName] = podKapitoly;
+
+                kapitoly_podkapitoly[dirName] = list;
 
             }
 
@@ -448,7 +496,7 @@ namespace Ucebnice.Controllers
         {
             ArrayList existujici_ucebnice = new ArrayList();
 
-            foreach (var d in System.IO.Directory.GetDirectories(@"ucebnice"))
+            foreach (var d in System.IO.Directory.GetDirectories(Directory.GetCurrentDirectory() + @"\ucebnice"))
             {
                 var dir = new DirectoryInfo(d);
                 var dirName = dir.Name;

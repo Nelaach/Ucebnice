@@ -6,17 +6,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword />
-    <History>False|2022-01-09T15:10:58.0980918Z;False|2022-01-09T16:08:20.8731437+01:00;False|2022-01-09T16:08:06.0295256+01:00;True|2022-01-09T16:05:54.2121631+01:00;True|2022-01-09T15:57:50.7714825+01:00;False|2022-01-09T15:55:59.4330140+01:00;False|2022-01-09T15:55:02.6380304+01:00;</History>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtEk4gPcxwUSTpLR/qA0m5wAAAAACAAAAAAAQZgAAAAEAACAAAADK25xs/vvW6izUCx+JuUe1ixQkuoz7haN2EBpFP8WmGAAAAAAOgAAAAAIAACAAAABHjPjXrjj4k1rFQp3CslqPiM6KgrCd9M/2OsyMyXuVcjAAAAAbCgMhUfWkqU9/F43my1BnZg8TOISlsKEz3Oxnq00NL1utHnuM6wldh26l1IvXwMdAAAAAzd6QV1VVkPw3zn+490uR3ESlGpL+bY4Ug+wZh3ngdBPZIcdIrHNgSXPxQxXSIcnS1j93TFvfN9nQyhgOmmSVWA==</EncryptedPassword>
+    <History>True|2022-05-13T14:43:14.3992503Z;True|2022-03-29T21:16:35.5886210+02:00;True|2022-03-29T20:52:04.4302549+02:00;True|2022-03-29T20:25:09.7622928+02:00;True|2022-03-29T20:21:07.0466917+02:00;True|2022-03-29T20:12:58.0471467+02:00;False|2022-03-29T20:12:32.0839518+02:00;True|2022-03-29T20:10:41.5366735+02:00;True|2022-03-29T20:04:07.1294383+02:00;False|2022-03-29T20:03:28.2875511+02:00;True|2022-03-29T20:01:26.9232982+02:00;True|2022-03-29T19:57:05.7836656+02:00;False|2022-03-29T19:55:42.1622367+02:00;True|2022-03-29T19:53:11.8801528+02:00;False|2022-03-29T19:52:08.9372501+02:00;True|2022-03-29T19:50:34.9518857+02:00;True|2022-03-29T19:43:31.9506150+02:00;False|2022-03-29T19:42:30.1499755+02:00;True|2022-03-29T19:41:02.4650631+02:00;True|2022-03-29T19:37:34.7598536+02:00;False|2022-03-29T19:35:19.3595852+02:00;True|2022-03-29T19:33:18.6928894+02:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="DefaultConnection">
-      <Value>Server=%28localdb%29\mssqllocaldb%3bDatabase=aspnet-Ucebnice-BB6F0FD4-7117-4621-BEBB-25337AA4B622%3bTrusted_Connection=True%3bMultipleActiveResultSets=true</Value>
+      <Value>Data Source=SQL8001.site4now.net%3bInitial Catalog=db_a84d74_prihlasovani%3bUser Id=db_a84d74_prihlasovani_admin%3bPassword=Administrator123%2a</Value>
     </DestinationConnectionStrings>
   </ItemGroup>
   <ItemGroup>
     <EFMigrations Include="Ucebnice.Data.ApplicationDbContext">
-      <Value>Server=%28localdb%29\mssqllocaldb%3bDatabase=aspnet-Ucebnice-BB6F0FD4-7117-4621-BEBB-25337AA4B622%3bTrusted_Connection=True%3bMultipleActiveResultSets=true</Value>
+      <Value>Data Source=SQL8001.site4now.net%3bInitial Catalog=db_a84d74_prihlasovani%3bUser Id=db_a84d74_prihlasovani_admin%3bPassword=Administrator123%2a</Value>
     </EFMigrations>
   </ItemGroup>
 </Project>

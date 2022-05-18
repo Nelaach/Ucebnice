@@ -34,7 +34,6 @@ using Ucebnice.Areas.Identity.Pages;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"13b82ef97968a56a4de533f67cf3e21d662f41aa", @"/Areas/Identity/Pages/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"758607f68e04b2b44a8fad5b4bf0ad5bfece4d1d", @"/_ViewImports.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6c89d1a636687dbb28ce90b6b8292e693e3e5e6b", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Identity_Pages__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>

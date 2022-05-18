@@ -1,5 +1,6 @@
 ﻿
 <div class="container">
+
     <main role="main" class="pb-3">
         <form method="post" name="myForm" enctype="multipart/form-data" asp-controller="Home" asp-action="NovaUcebnice">
             <table class="table table-borderless" style="width:40%">
@@ -18,7 +19,7 @@
                     <td>@ViewBag.Metadata[2]</td>
                 </tr>
             </table>
-            <img src=~/obrazky/@ViewBag.Metadata[0]@ViewBag.Metadata[3]>
+            <img src=~/obrazky/@ViewBag.Metadata[0]@ViewBag.Metadata[3] width="400" height="300">
 
         </form>
     </main>

@@ -13,20 +13,6 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 1 "C:\Users\Nel\source\repos\Ucebnice\Ucebnice\_ViewImports.cshtml"
-using Microsoft.AspNetCore.Identity;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 2 "C:\Users\Nel\source\repos\Ucebnice\Ucebnice\_ViewImports.cshtml"
-using Ucebnice.Areas.Identity;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 1 "C:\Users\Nel\source\repos\Ucebnice\Ucebnice\Views\_ViewImports.cshtml"
 using Ucebnice;
 
@@ -41,7 +27,6 @@ using Ucebnice.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c093200f8243e13cb2b4ef4c2d70b6f0dd47ca6b", @"/Views/Home/FormularUcebnice.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"758607f68e04b2b44a8fad5b4bf0ad5bfece4d1d", @"/_ViewImports.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"80ec0f612acbb947172444e03e4e2ceab8229abc", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Home_FormularUcebnice : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
@@ -93,7 +78,7 @@ using Ucebnice.Models;
 #line hidden
 #nullable disable
             WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c093200f8243e13cb2b4ef4c2d70b6f0dd47ca6b7454", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c093200f8243e13cb2b4ef4c2d70b6f0dd47ca6b6938", async() => {
                 WriteLiteral(@"
     <!--  jQuery -->
     <script type=""text/javascript"" src=""https://code.jquery.com/jquery-1.11.3.min.js""></script>
@@ -132,9 +117,9 @@ using Ucebnice.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c093200f8243e13cb2b4ef4c2d70b6f0dd47ca6b9328", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c093200f8243e13cb2b4ef4c2d70b6f0dd47ca6b8812", async() => {
                 WriteLiteral("\r\n    <div class=\"container\">\r\n        <div>&nbsp;</div>\r\n        <div>&nbsp;</div>\r\n        <h3 class=\"text-center\"> Vytvoření učebnice </h3>\r\n        <div>&nbsp;</div>\r\n\r\n        <main role=\"main\" class=\"pb-3\">\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c093200f8243e13cb2b4ef4c2d70b6f0dd47ca6b9832", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c093200f8243e13cb2b4ef4c2d70b6f0dd47ca6b9316", async() => {
                     WriteLiteral(@"
                 <table>
                     <tr>
@@ -205,7 +190,7 @@ using Ucebnice.Models;
         <a class=""btn"" style=""background:grey; color:aliceblue;"" onclick=""if(document.getElementById('skrytyText') .style.display=='none') {document.getElementById('skrytyText') .style.display=''}else{document.getElementById('skrytyText') .style.display='none'}"">Zobrazit/Skrýt</a>
         <div id=""skrytyText"" style=""display:none"">
             ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c093200f8243e13cb2b4ef4c2d70b6f0dd47ca6b13968", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c093200f8243e13cb2b4ef4c2d70b6f0dd47ca6b13452", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -221,7 +206,7 @@ using Ucebnice.Models;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n        </div>\r\n        <div>&nbsp;</div>\r\n        <main role=\"main\" class=\"pb-3\">\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c093200f8243e13cb2b4ef4c2d70b6f0dd47ca6b15335", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c093200f8243e13cb2b4ef4c2d70b6f0dd47ca6b14819", async() => {
                     WriteLiteral(@"
                 <table>
                     <tr>

@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    string[] logged_user = {"UpravaUcebnice", "UpravaMetadat" };
+    string[] logged_user = { "UpravaUcebnice", "UpravaMetadat" };
     string[] not_logged_in_user = { "ZobrazeniUcebnice", "ZobrazeniMetadat" };
 
     if (logged_user.Contains(ViewContext.RouteData.Values["action"].ToString()))

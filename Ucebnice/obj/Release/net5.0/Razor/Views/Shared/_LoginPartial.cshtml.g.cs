@@ -13,13 +13,6 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 2 "C:\Users\Nel\source\repos\Ucebnice\Ucebnice\_ViewImports.cshtml"
-using Ucebnice.Areas.Identity;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 1 "C:\Users\Nel\source\repos\Ucebnice\Ucebnice\Views\_ViewImports.cshtml"
 using Ucebnice;
 
@@ -41,7 +34,6 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"38bc83203c67489556e3167643711ddd1823ed17", @"/Views/Shared/_LoginPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"758607f68e04b2b44a8fad5b4bf0ad5bfece4d1d", @"/_ViewImports.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"80ec0f612acbb947172444e03e4e2ceab8229abc", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared__LoginPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
@@ -99,7 +91,7 @@ WriteAttributeValue("", 231,  ViewBag.Active == "nova_ucebnice" ? "nav-item acti
 #nullable disable
             EndWriteAttribute();
             WriteLiteral("> ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "38bc83203c67489556e3167643711ddd1823ed176856", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "38bc83203c67489556e3167643711ddd1823ed176522", async() => {
                 WriteLiteral("Nová učebnice");
             }
             );
@@ -121,7 +113,7 @@ WriteAttributeValue("", 231,  ViewBag.Active == "nova_ucebnice" ? "nav-item acti
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</li>\r\n");
             WriteLiteral("        <li class=\"nav-item\">\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "38bc83203c67489556e3167643711ddd1823ed178590", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "38bc83203c67489556e3167643711ddd1823ed178256", async() => {
                 WriteLiteral("Odhlásit se");
             }
             );
@@ -151,7 +143,7 @@ WriteAttributeValue("", 231,  ViewBag.Active == "nova_ucebnice" ? "nav-item acti
 #line hidden
 #nullable disable
             WriteLiteral("        <li class=\"nav-item\">\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "38bc83203c67489556e3167643711ddd1823ed1710396", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "38bc83203c67489556e3167643711ddd1823ed1710062", async() => {
                 WriteLiteral("Přihlášení");
             }
             );
